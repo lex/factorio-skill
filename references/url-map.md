@@ -1,0 +1,55 @@
+# URL Map — Fetch These for Depth
+
+When embedded references aren't enough, WebFetch the relevant page below.
+Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics.
+
+## Entry points
+- Runtime API index: https://lua-api.factorio.com/latest/index.html
+- Prototype index: https://lua-api.factorio.com/latest/prototypes.html
+- Types index: https://lua-api.factorio.com/latest/types.html
+- Wiki home: https://wiki.factorio.com/
+
+## Modding / scripting
+- Data lifecycle (on_init/on_load/migrations): https://lua-api.factorio.com/latest/auxiliary/data-lifecycle.html
+- Storage (persistent mod state, replaces `global`): https://lua-api.factorio.com/latest/auxiliary/storage.html
+- Libraries (util, serpent, and other bundled helpers): https://lua-api.factorio.com/latest/auxiliary/libraries.html
+- Events index: https://lua-api.factorio.com/latest/events.html
+- LuaGameScript class (the `game` object): https://lua-api.factorio.com/latest/classes/LuaGameScript.html
+- LuaSurface class: https://lua-api.factorio.com/latest/classes/LuaSurface.html
+- LuaEntity class: https://lua-api.factorio.com/latest/classes/LuaEntity.html
+- Wiki scripting tutorial: https://wiki.factorio.com/Tutorial:Scripting
+
+## Prototypes / data.raw
+- Data.raw overview: https://wiki.factorio.com/Data.raw
+- Modding tutorial (Gangsir) — data-stage walkthrough: https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir
+
+## Mechanics
+- Transport belts: https://wiki.factorio.com/Transport_belts
+- Belt transport system (lane/side mechanics): https://wiki.factorio.com/Belt_transport_system
+- Inserters: https://wiki.factorio.com/Inserters
+- Electric system: https://wiki.factorio.com/Electric_system
+- Pollution: https://wiki.factorio.com/Pollution
+- Damage (combat mechanics; `Combat` page no longer exists): https://wiki.factorio.com/Damage
+- Resistance: https://wiki.factorio.com/Resistance
+- Circuit network: https://wiki.factorio.com/Circuit_network
+- Multiplayer: https://wiki.factorio.com/Multiplayer
+
+## Space Age
+- Space Age overview: https://wiki.factorio.com/Space_Age
+- Quality: https://wiki.factorio.com/Quality
+- Spoilage: https://wiki.factorio.com/Spoilage
+- Spoilage mechanics (spoil timers, detail page linked from Spoilage): https://wiki.factorio.com/Spoilage_mechanics
+- Space platform: https://wiki.factorio.com/Space_platform
+- Asteroid: https://wiki.factorio.com/Asteroid
+- Vulcanus (planet): https://wiki.factorio.com/Vulcanus
+- Fulgora (planet): https://wiki.factorio.com/Fulgora
+- Gleba (planet): https://wiki.factorio.com/Gleba
+- Aquilo (planet): https://wiki.factorio.com/Aquilo
+- Elevated rail: https://wiki.factorio.com/Elevated_rail
+- LuaBootstrap class (mod registration/events entry point): https://lua-api.factorio.com/latest/classes/LuaBootstrap.html
+- LuaPlanet class: https://lua-api.factorio.com/latest/classes/LuaPlanet.html
+- LuaSpacePlatform class: https://lua-api.factorio.com/latest/classes/LuaSpacePlatform.html
+
+## Note
+URLs verified on 2026-07-07 against `/latest/`. If a page 404s, check the
+API/wiki index — the site reorganizes across versions.
