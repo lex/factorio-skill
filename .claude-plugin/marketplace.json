@@ -1,0 +1,13 @@
+{
+  "name": "factorio-skill",
+  "owner": {
+    "name": "lex"
+  },
+  "plugins": [
+    {
+      "name": "factorio",
+      "source": "./",
+      "description": "Factorio 2.0 + Space Age reference skill for modding and game mechanics."
+    }
+  ]
+}
