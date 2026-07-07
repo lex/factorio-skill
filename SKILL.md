@@ -51,7 +51,7 @@ answer Factorio 2.0 / Space Age facts from memory.
   `AssemblingMachinePrototype`, built on the abstract `CraftingMachinePrototype`,
   that execute recipes.
 - **Force** — the faction/ownership grouping (e.g. the player force) that
-  entities and surfaces belong to, via `game.forces`.
+  entities belong to, via `game.forces`.
 - **LuaObject validity** — handles like `LuaEntity`/`LuaPlayer`/`LuaSurface`
   can go stale; check `.valid` before using a stored reference.
 - **Quality** — Space Age feature: 5 tiers (Normal/Uncommon/Rare/Epic/
