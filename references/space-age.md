@@ -74,7 +74,7 @@ wagons.
    upgrade again, continuing until a roll fails. So going from Normal all
    the way to Legendary in one craft is possible but geometrically rare.
 
-**Recyclers** [Space Age only building, see below] return only **25% of
+**Recyclers** [separable mod] return only **25% of
 input items**, so the wiki's own guidance is: it's optimal to push quality
 upgrades right before the final target item (recycling loses too much
 material) *unless* a productivity research exists for that item, in which
@@ -86,8 +86,10 @@ fluids) and becomes optimal.
 **[Space Age only]** — "spoilage is a feature of the Space Age expansion,"
 per the wiki. Many items — mostly Gleba biological products — turn into
 **spoilage** (or a specific spoil product) after a fixed timer. Spoiling
-can happen **anywhere**: in a chest, in a machine's input/output slot, or
-while held in an inserter's hand — the timer never pauses regardless of
+can happen **anywhere** (the wiki lists "in machines, belts and even when
+being held by an inserter"): in a chest, on a transport belt, in a
+machine's input/output slot, or while held in an inserter's hand — the
+timer never pauses regardless of
 where the item sits, and there is no way to "freeze" an item's clock short
 of raising its quality.
 
