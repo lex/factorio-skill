@@ -135,12 +135,12 @@ Common members:
 | `position` | World coordinates. |
 | `surface` | The `LuaSurface` the entity lives on. |
 | `force` | Owning force. |
-| `direction` | Facing, 0–7. |
+| `direction` | Facing, a `defines.direction` value. **16-way in 2.0** (range 0–15): N=0, E=4, S=8, W=12, with intermediates in between (e.g. NE=2). Pre-2.0 was 8-way (0–7), so old code setting `direction = 2` for East is wrong under 2.0. |
 | `health` | Current health (read/write); `nil` for entities without health. |
 | `destroy(params?)` | Remove the entity (options for cliff correction, effects, undo). |
 | `get_inventory(index)` | Get one of the entity's inventories, or `nil`. |
 
-*(Source: `classes/LuaEntity.html`)*
+*(Source: `classes/LuaEntity.html`; `direction` values from `defines.html` → `defines.direction`)*
 
 ## Events
 
@@ -207,6 +207,7 @@ Factorio runs a modified Lua 5.2 with determinism-motivated restrictions:
 - https://lua-api.factorio.com/latest/classes/LuaGameScript.html
 - https://lua-api.factorio.com/latest/classes/LuaSurface.html
 - https://lua-api.factorio.com/latest/classes/LuaEntity.html
+- https://lua-api.factorio.com/latest/defines.html
 - https://lua-api.factorio.com/latest/events.html
 - https://lua-api.factorio.com/latest/auxiliary/libraries.html
 - https://wiki.factorio.com/Tutorial:Scripting

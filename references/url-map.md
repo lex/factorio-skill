@@ -20,6 +20,8 @@ Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics
 - Wiki scripting tutorial: https://wiki.factorio.com/Tutorial:Scripting
 
 ## Prototypes / data.raw
+- Prototype index (all prototype types): https://lua-api.factorio.com/latest/prototypes.html
+- Types index (property value types): https://lua-api.factorio.com/latest/types.html
 - Data.raw overview: https://wiki.factorio.com/Data.raw
 - Modding tutorial (Gangsir) — data-stage walkthrough: https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir
 
