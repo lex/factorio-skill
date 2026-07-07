@@ -90,11 +90,11 @@ missing. Extra properties that the game isn't looking for are ignored."
 Because `data.raw` is a plain shared table during the whole data stage,
 any mod that loads after another can reach into `data.raw` and mutate a
 prototype the earlier mod (or the base game) already defined — no special
-API needed, just ordinary table assignment:
+API needed, just ordinary table assignment. The wiki's own example bumps
+the raw-fish stack size:
 
 ```lua
 data.raw["capsule"]["raw-fish"].stack_size = 200
-data.raw["container"]["iron-chest"].max_health = 1000
 ```
 
 The idiomatic way to effectively *remove* something without deleting the
@@ -159,31 +159,34 @@ Practical implication of the three-file split:
 
 ## Key prototype categories
 
-`data.raw` groups its ~251 types into a few functional families (from the
-lua-api prototype index). Every concrete prototype has a `type` field
-that names its category (e.g. `'accumulator'`, `'achievement'`); abstract
-prototypes like `PrototypeBase` or `Prototype` are base classes in the
-inheritance tree and are never instantiated directly.
+**`prototypes.html` itself is a single flat alphabetical list of ~251
+prototype classes — it does not define named category groupings.** The
+table below is an *informal grouping I've added purely for orientation*;
+do not treat the family names ("Entities", "Items", etc.) as anything the
+source defines. Only the individual class names in the right column are
+taken verbatim from `prototypes.html`.
 
-| Category | Covers |
+| Grouping (informal, mine) | Confirmed classes on prototypes.html |
 |---|---|
-| Entities | Machines and placed objects: accumulators, beacons, assembling machines, furnaces, turrets, walls, etc. |
-| Items & Equipment | Armor, tools, modules, consumables, equipment grids |
-| Recipes & Crafting | `recipe` prototypes and recipe-category definitions |
-| Technology & Research | `technology` prototypes and research definitions |
-| Transport & Logistics | Belts, inserters, robots, trains, vehicles |
-| Signals & Control | Combinators, virtual signals, custom inputs/events |
-| Achievements | The various achievement-condition prototype types |
-| Audio & Visual | Sprites, animations, sounds, fonts |
-| Game Configuration | Map settings, difficulty, map-generation presets, utility prototypes |
+| Entities | `AccumulatorPrototype`, `AgriculturalTowerPrototype`, `AssemblingMachinePrototype` (plus the abstract `EntityPrototype`, `EntityWithHealthPrototype`, `CraftingMachinePrototype` bases) |
+| Items & equipment | `AmmoItemPrototype`, `ArmorPrototype`, `ActiveDefenseEquipmentPrototype` |
+| Recipes | `RecipePrototype`, `AmmoCategory` |
+| Technology | `TechnologyPrototype` |
+| Achievements | `AchievementPrototype`, `AchievementPrototypeWithCondition` |
+| Audio / environment | `AmbientSound`, `AirbornePollutantPrototype`, `ActiveTriggerPrototype` |
 
-Inheritance is real but shown structurally rather than with explicit
-"inherits from" links in the docs — e.g. `AssemblingMachinePrototype`
-inherits from the abstract `CraftingMachinePrototype`, and the reference
-describes a full prototype tree that "can be visualized as a tree." When
-in doubt about which fields a given type accepts, check its page under
-`prototypes.html`, since inherited fields aren't always repeated on the
-concrete type's own page.
+The structure the page *does* commit to, verbatim: it distinguishes
+**abstract** base classes — e.g. `PrototypeBase` ("the abstract base for
+prototypes"), `EntityPrototype` ("abstract base of all entities"),
+`EntityWithHealthPrototype` ("abstract base of all entities with health"),
+`CraftingMachinePrototype` ("abstract basis") — from **concrete**
+prototypes, which each carry a `type` string (e.g. `'accumulator'`,
+`'achievement'`, as used in the `data:extend` examples above). Abstract
+classes are never instantiated directly; they exist so concrete types
+inherit their fields (e.g. `AssemblingMachinePrototype` builds on
+`CraftingMachinePrototype`). When in doubt about which fields a given type
+accepts, read its page under `prototypes.html` — inherited fields aren't
+always repeated on the concrete type's own entry.
 
 *(Source: lua-api `prototypes.html`)*
 
