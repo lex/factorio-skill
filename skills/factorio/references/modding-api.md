@@ -176,7 +176,7 @@ instead of every tick, use `script.on_nth_tick(n, handler)`.
 
 ## Libraries available to mods
 
-Factorio runs a modified Lua 5.2 with determinism-motivated restrictions:
+Factorio runs a modified Lua **5.2.1** (per the wiki's Modding overview page) with determinism-motivated restrictions:
 
 - `loadfile`, `dofile`, `coroutine`, `io`, and `os` are **not available**.
 - `print()` writes to stdout only (use `log()` to write to the Factorio log; `log()` accepts LocalisedStrings).
@@ -188,6 +188,24 @@ Factorio runs a modified Lua 5.2 with determinism-motivated restrictions:
 - `table_size()` is provided for fast table-size queries on non-contiguous tables.
 
 *(Source: `auxiliary/libraries.html`)*
+
+## Installing & distributing mods
+
+- **Installation:** a mod downloaded as a ZIP file is installed by copying
+  the ZIP **as-is (not unzipped)** into the `mods` directory in the user data
+  directory.
+- **Required dependency:** a mod that another mod needs in order to
+  function; the in-game mod portal downloads required dependencies
+  automatically when you download a mod.
+- **Optional dependency:** a mod that another mod suggests but doesn't need
+  to work; it can add functionality without being mandatory.
+- **Incompatibility:** mods can declare each other incompatible, which
+  prevents them from being loaded together.
+- **Multiplayer auto-sync:** joining a multiplayer server that uses mods
+  makes the game "offer to synchronize the mods with the server" — accepting
+  downloads/enables the exact same mod set and versions the server is using.
+
+*(Source: `wiki.factorio.com/Modding`)*
 
 ## Common gotchas
 
@@ -211,3 +229,4 @@ Factorio runs a modified Lua 5.2 with determinism-motivated restrictions:
 - https://lua-api.factorio.com/latest/events.html
 - https://lua-api.factorio.com/latest/auxiliary/libraries.html
 - https://wiki.factorio.com/Tutorial:Scripting
+- https://wiki.factorio.com/Modding

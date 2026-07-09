@@ -104,6 +104,8 @@ solar priority order, circuit signal overflow, and more).
   elevated rails)? → `references/space-age.md`.
 - Asked about an *upcoming/unreleased* 2.1 feature? → `references/upcoming-2.1.md`
   (clearly flagged as not-yet-shipped; don't state it as current behavior).
+- Need to inspect/test a running game (debug overlays, console commands,
+  cheats)? → `references/console-and-debug.md`.
 - Anything not covered above, or you're unsure which page has it? →
   `references/url-map.md` to pick the right URL, then WebFetch it.
 
@@ -114,5 +116,6 @@ solar priority order, circuit signal overflow, and more).
 - `references/mechanics.md` — ratios, limits, numbers.
 - `references/space-age.md` — expansion mechanics.
 - `references/quirks.md` — gotchas & common mistakes.
+- `references/console-and-debug.md` — debug mode overlays & console commands.
 - `references/upcoming-2.1.md` — unreleased Factorio 2.1 features (subject to change).
 - `references/url-map.md` — topic → URL for deep fetch.

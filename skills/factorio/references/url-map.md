@@ -55,6 +55,11 @@ Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics
 ## Upcoming / unreleased (2.1)
 - Upcoming features (Factorio 2.1, subject to change): https://wiki.factorio.com/Upcoming_features
 
+## Console, debug & modding overview
+- Debug mode (F5/F4 overlays, show-* toggles): https://wiki.factorio.com/Debug_mode
+- Console (opening it, /c /sc /mc, built-in commands): https://wiki.factorio.com/Console
+- Modding overview (install/distribute mods, dependencies): https://wiki.factorio.com/Modding
+
 ## Note
 URLs verified on 2026-07-07 against `/latest/`. If a page 404s, check the
 API/wiki index — the site reorganizes across versions.
