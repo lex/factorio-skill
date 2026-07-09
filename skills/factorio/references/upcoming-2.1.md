@@ -91,6 +91,25 @@ mod or map for a released game today, target 2.0 + Space Age.
 - A possible special achievement requiring all others to be earned in a single
   playthrough.
 
+## Maintenance (for skill maintainers)
+
+This file has a limited shelf life. 2.1 stable was planned for around
+mid-2026, so this content **will drift as features actually ship** — some may
+change, some may be cut.
+
+When 2.1 is released:
+
+1. Re-fetch the sources below and diff against this file — what shipped, what
+   changed, what was dropped.
+2. Fold the **confirmed** changes into the main references (`mechanics.md`,
+   `space-age.md`, `data-raw.md`, `modding-api.md`), re-sourced to the live
+   2.1 wiki/API pages, and update the version banner in `SKILL.md`.
+3. Shrink this file to only genuinely-still-upcoming items, or delete it and
+   remove its pointers from `SKILL.md` and `url-map.md` once nothing here is
+   unreleased.
+
+Until then, treat everything above as pre-release.
+
 ## Sources
 
 - https://wiki.factorio.com/Upcoming_features (Factorio 2.1 upcoming features)
