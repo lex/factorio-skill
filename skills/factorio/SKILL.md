@@ -68,6 +68,28 @@ answer Factorio 2.0 / Space Age facts from memory.
 - **Space platform** — a self-contained orbital factory anchored by a space
   platform hub, built via ghost/remote construction and moved by thrusters.
 
+### Build-pattern vocabulary
+
+- **Main bus** — placing multiple belts side by side each carrying one
+  resource, with setups branching off; the opposite of spaghetti.
+- **Spaghetti** — a community term for the disorganized look of many
+  belts/entities placed without a consistent layout.
+- **Sushi belt** — mixing many different item types on one transport belt
+  to supply machines that need some or all of those items.
+- **(Belt) balancer** — a belt setup that balances multiple belts to
+  contain the same amount of resources, maximizing throughput.
+- **Bottleneck / backpressure** — a bottleneck is a single point where
+  resources are constrained (e.g. a slow belt segment slowing everything);
+  backpressure is what a machine, belt segment, or inserter experiences
+  when delivery stalls because its target is backed up.
+- **Mall (hub)** — a location in a factory that produces many different
+  item types the player needs, in relatively small amounts.
+- **SPM / eSPM** — science (packs) per minute; eSPM is "effective" SPM, a
+  measure of SPM that explicitly includes all the upgrades.
+- **Megabase** — a community term for a significantly large base built
+  over significant time/effort, typically considered a megabase once it
+  can maintain around 1k SPM.
+
 ## Cross-cutting quirks (read before scripting)
 
 - **`storage`, not `global`.** Factorio 2.0 renamed the persistent per-mod
@@ -106,6 +128,22 @@ solar priority order, circuit signal overflow, and more).
   (clearly flagged as not-yet-shipped; don't state it as current behavior).
 - Need to inspect/test a running game (debug overlays, console commands,
   cheats)? → `references/console-and-debug.md`.
+- Asked about rail signals/blocks, chain-signal behavior, train schedules
+  or interrupts, logistic chests/robots, or blueprints? →
+  `references/trains-and-logistics.md`.
+- Asked about circuit/combinator logic (arithmetic/decider/constant/
+  selector operators, signal wildcards, wire reach)? →
+  `references/circuits-and-combinators.md`.
+- Packaging or publishing a mod (`info.json`, `settings.lua`, locale
+  `.cfg` files, migrations)? → `references/mod-packaging.md`.
+- Building a map, scenario, or campaign (map editor, `control.lua`-only
+  scenarios, map generator settings, the Tutorial campaign)? →
+  `references/map-making.md`.
+- Need player stats, armor tiers, or equipment-grid items? →
+  `references/player-and-equipment.md`.
+- Asked about biters/spitters/worms, evolution factor, or defense design
+  (turrets, walls, mines, peaceful mode)? →
+  `references/enemies-and-evolution.md`.
 - Anything not covered above, or you're unsure which page has it? →
   `references/url-map.md` to pick the right URL, then WebFetch it.
 
@@ -117,5 +155,19 @@ solar priority order, circuit signal overflow, and more).
 - `references/space-age.md` — expansion mechanics.
 - `references/quirks.md` — gotchas & common mistakes.
 - `references/console-and-debug.md` — debug mode overlays & console commands.
+- `references/trains-and-logistics.md` — rail signals/blocks, chain-signal
+  look-ahead exception, train schedules/interrupts, logistic chests/robots,
+  blueprints.
+- `references/circuits-and-combinators.md` — deep combinator reference:
+  arithmetic/decider/constant/selector operators & modes, signal
+  wildcards, wire reach.
+- `references/mod-packaging.md` — info.json fields & dependency syntax,
+  settings.lua, locale .cfg format, migrations.
+- `references/map-making.md` — map editor, scenario system (control.lua-only,
+  description.json), map generator settings, Tutorial campaign.
+- `references/player-and-equipment.md` — player stats, armor tiers,
+  equipment-grid items.
+- `references/enemies-and-evolution.md` — evolution factor formula,
+  biter/spitter/worm & turret/wall/mine stats, peaceful mode.
 - `references/upcoming-2.1.md` — unreleased Factorio 2.1 features (subject to change).
 - `references/url-map.md` — topic → URL for deep fetch.

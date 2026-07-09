@@ -2,7 +2,8 @@
 
 A grab-bag of counterintuitive behaviors and easy-to-make mistakes,
 distilled from `references/modding-api.md`, `data-raw.md`, `mechanics.md`,
-and `space-age.md`. Each entry follows the same shape:
+`space-age.md`, `trains-and-logistics.md`, and `mod-packaging.md`. Each
+entry follows the same shape:
 
 **what surprises people → why → what to do instead.**
 
@@ -96,6 +97,16 @@ and `space-age.md`. Each entry follows the same shape:
   code that needs persistent state uses `storage` instead (see Scripting
   quirks above).
 
+## Localisation & mod-packaging quirks
+
+- **A `LocalisedString` parameter must be a string, even if it looks like a
+  number or boolean.** Passing a raw number/boolean as a parameter — e.g.
+  `{"x", 42}` — throws "Value must be a string" at both data and control
+  stage; only string parameters (including other `LocalisedString` tables)
+  are accepted. → Wrap non-string values with `tostring()` before passing
+  them as `LocalisedString` parameters. (Tutorial:Localisation — see
+  `mod-packaging.md`.)
+
 ## Mechanics quirks
 
 - **The belt-throughput table header says "stacks/second," but the numbers
@@ -144,6 +155,16 @@ and `space-age.md`. Each entry follows the same shape:
   without meaning to. → Only build a self-referencing combinator loop on
   purpose (e.g. as a clock/counter), and expect its value to climb once
   per tick, not instantly.
+
+- **A chain signal can wave a train through even though the exit ahead is
+  blocked.** The look-ahead only applies when *more signals remain* between
+  the chain signal and the train's destination — if the destination is
+  reachable from that chain signal without crossing any further signal, the
+  chain signal doesn't reserve/check the far block at all, so a train can
+  be sent toward a blocked dead-end/final stop. → Put a plain rail signal
+  (not a chain signal) at the boundary when a hard stop is needed near a
+  dead-end or final stop. (Rail_chain_signal — see
+  `trains-and-logistics.md`.)
 
 ## Space Age quirks
 
@@ -222,3 +243,5 @@ and `space-age.md`. Each entry follows the same shape:
 - https://wiki.factorio.com/Quality
 - https://wiki.factorio.com/Spoilage
 - https://wiki.factorio.com/Elevated_rail
+- https://wiki.factorio.com/Rail_chain_signal
+- https://wiki.factorio.com/Tutorial:Localisation
