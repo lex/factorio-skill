@@ -530,7 +530,8 @@ here as not yet confirmed:
 - Accumulator capacity: 5 MJ; max charge/discharge: 300 kW.
 - Circuit signal range: signed 32-bit integer, −2,147,483,648 to
   2,147,483,647 (wraps on overflow).
-- Constant combinator: up to 20 signal values per combinator.
+- Constant combinator: up to 20 signal values per combinator (pre-2.0.7 model;
+  2.0.7+ uses logistic groups — see the Circuit network section).
 - Virtual signals: 177 (base game) / 241 (with Space Age).
 - Player base health: 250 HP.
 - Resistance: 100% percentage resistance is the only way to reach true
