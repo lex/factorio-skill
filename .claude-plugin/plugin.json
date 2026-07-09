@@ -1,6 +1,6 @@
 {
   "name": "factorio",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Factorio 2.0 + Space Age reference for modding (control.lua, scenarios, prototypes/data.raw, runtime API) and game mechanics (recipes, ratios, quirks, quality, spoilage, planets). Facts distilled from wiki.factorio.com and lua-api.factorio.com and cited in-file.",
   "author": {
     "name": "lex"
