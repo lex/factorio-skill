@@ -75,14 +75,13 @@ Inventory slot bonus by quality tier:
 | Armor | Normal | Uncommon | Rare | Epic | Legendary |
 |---|---|---|---|---|---|
 | Modular armor | +10 | +13 | +16 | +19 | +25 |
-| Power armor | +20 | (scales) | (scales) | (scales) | +50 |
+| Power armor | +20 | +26 | +32 | +38 | +50 |
 | Power armor MK2 | +30 | +39 | +48 | +57 | +75 |
-| Mech armor | +50 | (scales) | (scales) | (scales) | +125 |
+| Mech armor | +50 | +65 | +80 | +95 | +125 |
 
-Power armor's Uncommon/Rare/Epic intermediate inventory-bonus figures and Mech armor's
-Uncommon/Rare/Epic figures were not returned as explicit numbers by the fetch (only
-"scales with quality tier up to X for Legendary" was stated) — **unverified** for the
-missing intermediate values; Normal and Legendary values are as directly stated.
+Power armor's and Mech armor's Uncommon/Rare/Epic intermediate inventory-bonus figures
+are confirmed directly from each page's "Inventory size bonus" infobox table (per
+quality tier), not derived.
 
 Crafting recipes (key ingredients, per [respective wiki pages](#sources)):
 
@@ -133,12 +132,19 @@ Legendary), and per-tier figures are included where the fetch returned them.
 | Epic | 6.65 MW | 19 | 5 x 1.9 MW |
 | Legendary | 8.75 MW | 25 | 7 x 2.5 MW |
 
-**Energy shield:** capacity scales Normal 50 HP -> Legendary 125 HP; recharge scales
-Normal 12 HP/s -> Legendary 30 HP/s; consumption scales Normal 240 kW -> Legendary
-600 kW (intermediate Uncommon/Rare/Epic values were not returned by the fetch —
-**unverified** for those specific numbers). Energy shield MK2 exists per the page but
-its capacity/recharge/consumption numbers were not returned by the fetch —
-**unverified**.
+**Energy shield capacity by quality** (shield hitpoints): Normal 50, Uncommon 65,
+Rare 80, Epic 95, Legendary 125.
+
+**Energy shield max recharge speed by quality** (HP/s): Normal 12, Uncommon 15.6,
+Rare 19.2, Epic 22.8, Legendary 30.
+
+**Energy shield energy consumption by quality** (kW): Normal 240, Uncommon 312,
+Rare 384, Epic 456, Legendary 600.
+
+Energy shield MK2 exists per the page (linked as the item this equipment is
+"consumed by"/obsoleted by) but its own capacity/recharge/consumption numbers are
+not given on the *Energy shield* page itself — **unverified** (would need the
+*Energy shield MK2* page fetched separately).
 
 **Exoskeleton speed bonus by quality:** Normal +30%, Uncommon +39%, Rare +48%, Epic
 +57%, Legendary +75%.

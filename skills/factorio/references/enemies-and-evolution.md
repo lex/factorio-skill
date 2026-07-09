@@ -45,19 +45,22 @@ also push evolution up (destroying nests is itself a direct contributor,
 separate from and in addition to any pollution the fight produces).
 
 **Enemy-appearance thresholds** (evolution factor at which a tier starts
-spawning), per the *Evolution* page's table:
+spawning), per the *Evolution*/*Enemies#Evolution* page's table (columns:
+evolution factor, pollution equivalent, appearance):
 
 | Evolution factor | Unlocks |
 |---|---|
-| 10% | Small biters |
-| 25% | Small spitters |
-| 40% | Medium spitters |
+| 20% | Medium Biter |
+| 25% | Small Spitter |
+| 40% | Medium Spitter |
 | 50% | Big biters and big spitters |
 | 90% | Behemoth biters and behemoth spitters |
 
-Medium biters were not given an explicit separate threshold on the fetched
-page — **unverified** whether they follow the same 40% gate as medium
-spitters or a different one; treat with caution.
+Small biters have **no appearance threshold** — the page states plainly
+"In the beginning of a game, there will only be the small ones," and the
+table's own 10% row has an empty Appearance cell (10% is listed only as a
+pollution-equivalent milestone, not as when small biters first unlock).
+Treat small biters as present from evolution factor 0.
 
 **Worm expansion gates** (also from *Evolution*, cross-checked against the
 worm-tier requirements on *Enemies*/*Biters*):
@@ -107,10 +110,17 @@ on itself. "Speed" for worms is n/a — worms are stationary.
 
 | Tier | HP | Damage | Attack speed | Range | Resistances | Evolution gate |
 |---|---|---|---|---|---|---|
-| Small | 200 | 36 acid | 0.65/s | 25 | Fire 60% | (available from start) |
+| Small | 200 | 36 acid | 0.65/s | 25 | none listed (see note) | (available from start) |
 | Medium | 500 | 48 acid | 0.65/s | 30 | Explosion 5/15%, Fire 2/50%, Laser 20%, Physical 5/0% | 0.3 |
 | Big | 1500 | 72 acid | 0.65/s | 38 | Explosion 10/30%, Fire 3/70%, Laser 50%, Physical 10/0% | 0.5 |
 | Behemoth | 3000 | 96 acid | 0.65/s | 48 | Explosion 10/30%, Fire 3/70%, Laser 80%, Physical 10/0% | 0.9 |
+
+The *Enemies* page's Small worm stat block lists no "Resistances:" section at
+all (only Health/Range/Acid projectile/Acid puddle) — unlike Medium/Big/
+Behemoth worms, which each have an explicit Resistances list. The page's
+general Worms intro does say worms as a class are "highly resistant to
+fire," but gives no specific number for Small worm, so no per-tier value is
+stated here — **unverified** for Small worm specifically.
 
 **Spawners (biter/spitter nests)**: base HP 350, scaling up to 3500 "at max
 evolution" (the *Biters* page's phrasing; exact scaling curve between 0 and
