@@ -12,7 +12,9 @@ description: >-
 # Factorio (2.0 + Space Age)
 
 > Version: Factorio **2.0** with the **Space Age** expansion. Facts predating
-> 2.0 are out of scope unless explicitly labeled historical.
+> 2.0 are out of scope unless explicitly labeled historical. Unreleased **2.1**
+> features are tracked separately in `references/upcoming-2.1.md` and must not
+> be treated as current behavior.
 
 ## What you get here
 
@@ -100,6 +102,8 @@ solar priority order, circuit signal overflow, and more).
   definition)? → `references/data-raw.md`, or `prototypes.html`/`types.html`.
 - Need Space Age specifics (quality, spoilage, planets, space platforms,
   elevated rails)? → `references/space-age.md`.
+- Asked about an *upcoming/unreleased* 2.1 feature? → `references/upcoming-2.1.md`
+  (clearly flagged as not-yet-shipped; don't state it as current behavior).
 - Anything not covered above, or you're unsure which page has it? →
   `references/url-map.md` to pick the right URL, then WebFetch it.
 
@@ -110,4 +114,5 @@ solar priority order, circuit signal overflow, and more).
 - `references/mechanics.md` — ratios, limits, numbers.
 - `references/space-age.md` — expansion mechanics.
 - `references/quirks.md` — gotchas & common mistakes.
+- `references/upcoming-2.1.md` — unreleased Factorio 2.1 features (subject to change).
 - `references/url-map.md` — topic → URL for deep fetch.

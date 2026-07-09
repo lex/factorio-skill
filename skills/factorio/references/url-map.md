@@ -52,6 +52,9 @@ Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics
 - LuaPlanet class: https://lua-api.factorio.com/latest/classes/LuaPlanet.html
 - LuaSpacePlatform class: https://lua-api.factorio.com/latest/classes/LuaSpacePlatform.html
 
+## Upcoming / unreleased (2.1)
+- Upcoming features (Factorio 2.1, subject to change): https://wiki.factorio.com/Upcoming_features
+
 ## Note
 URLs verified on 2026-07-07 against `/latest/`. If a page 404s, check the
 API/wiki index — the site reorganizes across versions.
