@@ -152,6 +152,22 @@ Acid neutralization byproduct is 500°C steam usable in turbines. No crude
 oil, but coal liquefaction and heavy oil are available. Connected to
 Nauvis and Gleba, 15,000 km each.
 
+*Demolishers* (per the wiki's *Demolisher* page; unrelated to Nauvis biters
+— see `references/enemies-and-evolution.md` for those) come in three
+sizes, each with HP and a per-second regen rate: small 30,000 HP (regen
+2,400/s), medium 100,000 HP (regen 7,800/s), big 300,000 HP (regen
+24,000/s). They are **territorial**: "building structures in their
+territory will disturb them and cause them to attack," implying they
+otherwise leave players alone. Resistances are near-total and identical
+across all three sizes: 100% fire, 100% impact, 100% laser, 60%
+explosion (head) / 99% explosion (body), 50% physical (head) / 5–50%
+physical (body), 10% poison (head) / 50% poison (body), 20/20% electric.
+Contact deals "high damage to the player, and instantly destroy[s]
+buildings and cliffs"; ranged attacks erupt explosions from the ground,
+and they can coil around a player to block escape. On death they leave
+remains "similar to that of black volcanic rock, which contain tungsten
+ore."
+
 **Fulgora** — "a new barren desert planet" of island plateaus separated by
 deep oilsand oceans; 3-minute day/night cycle, no native enemies, buildable
 area limited to plateaus. Lightning: each bolt carries 1 GJ; lightning
@@ -178,6 +194,23 @@ fuel from jelly. Heating tower is a burner device generating electricity
 via heat exchangers + steam turbines. Planet properties: Solar power 50%
 (surface) / 200% (orbit), Gravity 20, Pressure 2000, Magnetic field 10.
 Connected to all of Nauvis, Vulcanus, Fulgora, Aquilo (15,000–30,000 km).
+
+*Pentapods* (per the wiki's *Pentapods* page; distinct from Nauvis biters
+— see `references/enemies-and-evolution.md` for those) come in three
+behavioral types, each in small/medium/big sizes with rising HP:
+**Wrigglers** are melee (100/200/400 HP, dealing 3.75+3.75 to 8+8
+combined physical+poison damage as they scale up, 50% laser resistance);
+**Strafers** are ranged/circling (800/1400/2400 HP, explosive projectile
+damage 67.5/90/144, ~2–10% physical resistance, 50% laser resistance);
+**Stompers** are melee with the heaviest resistances (3,500/8,000/15,000
+HP, 80% impact and 80% laser resistance, 2–50% physical resistance) and
+apply an acid-splash-on-contact effect that slows the target's movement
+speed to 60%. They nest in **egg rafts** placed on marsh tiles — a
+regular egg raft has 500 HP (5,000 at max evolution) and a small egg raft
+100 HP (1,000 at max evolution). Per the wiki, pentapods are drawn to
+**Spores** (Gleba's pollution analog, produced by biological
+processing) — an in-game achievement is literally themed around
+attracting a pentapod group with spores.
 
 **Aquilo** — "a vast ocean of liquid ammonia, with the occasional floating
 iceberg"; final progression planet. Cold is the defining hazard: most
@@ -313,8 +346,10 @@ Factorio Lua API docs (`LuaBootstrap`):
 - https://wiki.factorio.com/Space_platform
 - https://wiki.factorio.com/Asteroid
 - https://wiki.factorio.com/Vulcanus
+- https://wiki.factorio.com/Demolisher
 - https://wiki.factorio.com/Fulgora
 - https://wiki.factorio.com/Gleba
+- https://wiki.factorio.com/Pentapods
 - https://wiki.factorio.com/Aquilo
 - https://wiki.factorio.com/Elevated_rail
 - https://lua-api.factorio.com/latest/classes/LuaBootstrap.html

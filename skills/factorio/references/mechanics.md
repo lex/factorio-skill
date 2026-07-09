@@ -241,7 +241,14 @@ From the wiki's *Circuit network* page (current as of 2.0.67):
   holding 1000 crude oil produce a combined crude-oil signal of 2000 on
   that network.
 - **Combinators**:
-  - *Constant combinator* — broadcasts up to 20 fixed signal values.
+  - *Constant combinator* — in the **pre-2.0.7 model**, broadcasts up to 20
+    fixed signal values (the description used throughout the rest of this
+    section). The wiki's *Constant combinator* page confirms **2.0.7
+    reworked this**: combinators now configure and output via named
+    **logistic groups** rather than a fixed 20-slot grid (a logistic group
+    holds a min/max per signal, and "the constant combinator will only
+    output the minimum value"). For full combinator operator/mode details,
+    see `references/circuits-and-combinators.md`.
   - *Arithmetic combinator* — takes input signal(s), applies a math
     operation, emits a result signal.
   - *Decider combinator* — compares input signal(s) against a condition
@@ -261,6 +268,253 @@ From the wiki's *Circuit network* page (current as of 2.0.67):
   wire type), which the page does not enumerate numerically — **specific
   wire-reach distances are unverified here**; consult individual
   entity pages if a wire-length number is needed.
+
+## Nuclear & heat
+
+From the wiki's *Nuclear reactor*, *Heat pipe*, *Uranium processing*, and
+*Heat exchanger* pages.
+
+**Reactor output**: a single normal-quality reactor produces **40 MW**
+thermal (scales with quality, up to 100 MW at legendary). Reactor heat
+capacity is 10 MJ/°C, buffering 5 GJ across its 500–1000°C working range.
+
+**Neighbour bonus**: "reactors receive a bonus for adjacent operating
+reactors, which increases their effective thermal output by 100% per each
+such link" — i.e. +100% per adjacent connected reactor, and the page states
+this uncapped (two adjacent reactors run at 80 MW each, 160 MW combined;
+longer rows compound further since every link adds another 100%).
+
+**Meltdown**: confirmed on the *Nuclear reactor* page — "if a reactor is
+destroyed (by damage) while it is above 900°C, it will explode, having the
+same effects of an atomic bomb," and critically "one explosion can lead to a
+chain reaction of exploding reactors." 900°C is exactly the page's stated
+threshold, not an approximation.
+
+**Heat pipe / conduction formulas** (from *Heat pipe*, quoted verbatim):
+heat pipes "lower the temperature by `1 + (P / 15) °C`" per pipe segment,
+where P is the power (MW) flowing through it; a reactor's own internal
+conduction drops temperature by `1 + (P / 387) °C` (the page notes 387 is a
+rounding of the actual constant, "200000/517 or about 386.847"). Heat pipes
+have 1 MJ/°C capacity, buffering 500 MJ across the same 500–1000°C range,
+max temperature 1000°C.
+
+**Heat exchanger**: consumes 10 MW (heat) and produces "~103 steam with a
+temperature of 500°C every second" (derived on the page from 500°C steam
+holding 0.097 MJ/unit). Since a reactor outputs 40 MW, **4 heat exchangers
+exactly consume one reactor's output** (computed from these two confirmed
+figures — the page does not itself state a reactor:exchanger ratio). A
+steam turbine consumes 60 steam/s for 5.82 MW, so one heat exchanger's 103
+steam/s feeds roughly 1.7 turbines.
+
+**Fuel / Kovarex** (from *Uranium processing*): centrifuge processing of
+uranium ore yields "99.3% chance to produce 1 uranium-238 and a 0.7% chance
+to produce 1 uranium-235" per cycle (10 ore in, 12 s/cycle). The Kovarex
+enrichment process needs **40 U-235 stockpiled to start** — the page frames
+reaching 40 U-235 as the threshold to "initiate Kovarex enrichment" (exact
+recipe input/output ratios were not itemized on the page — unverified
+beyond that starting threshold). Uranium fuel cells burn for **200
+seconds**, confirmed on both *Nuclear reactor* and *Uranium processing*;
+combined with the 40 MW reactor output this is consistent with the already-
+sourced "~8 GJ per fuel-cell burn" figure in the Power section above (40 MW
+× 200 s = 8 GJ).
+
+## Modules & beacons
+
+From the wiki's *Module* and *Beacon* pages.
+
+| Module | Tier 1 | Tier 2 | Tier 3 |
+|---|---|---|---|
+| Speed (speed / energy) | +20% / +50% | +30% / +60% | +50% / +70% |
+| Productivity (prod / speed / energy / pollution) | +4% / −5% / +40% / +5% | +6% / −10% / +60% / +7% | +10% / −15% / +80% / +10% |
+| Efficiency (energy) | −30% | −40% | −50% |
+
+Figures are normal-quality module values. Efficiency modules also reduce
+pollution roughly in proportion to the energy reduction.
+
+**Effects are additive, not multiplicative** — stacking modules gives
+linear gains, no compounding. Energy-consumption reduction caps at −80%
+total, and the page states "the lowest amount of energy that efficiency
+modules can be used to achieve is **20% of the machine's base energy
+usage**" (i.e. a hard floor, not a ratio that can be driven to zero).
+
+**Productivity module restrictions**: disallowed on barrel filling/emptying,
+barrel production from steel, and steam condensation (Space Age); a short
+list of non-intermediate exceptions (stone bricks, certain concrete
+recipes, artificial soil) are explicitly allowed despite not being typical
+productivity-eligible recipes.
+
+**Beacons (2.0 rework)**: a normal-quality beacon has **distribution
+efficiency 1.5** (150%), rising to 2.5 at legendary quality. Only speed and
+efficiency modules can be inserted into a beacon — productivity and quality
+modules are rejected. The *Beacon* page gives the current stacking formula
+directly: for a machine affected by `n` beacons, each beacon's contribution
+is
+
+```
+(distribution efficiency) ÷ √n
+```
+
+so same-tier normal beacons combine to `1.5 × √n` total effect. Confirmed
+worked example from the page: 1 beacon → 150% total effect; 2 beacons →
+212.13% total (a marginal gain of only 62.13% from the second beacon) —
+i.e. genuine diminishing returns per additional beacon, not a hard cap.
+Beacon power draw is 480 kW at normal quality (down to 80 kW at legendary),
+and beacons "always consume power, even when the machines they're boosting
+are halted."
+
+## Fluids
+
+From the wiki's *Fluid system* page (storage-tank and fluid-wagon figures
+cross-checked against *Storage*).
+
+A single pipe segment holds 100 fluid. Per unique input/output pipe
+connection, the page gives a **theoretical maximum of 6000 fluid/s** (100
+fluid/tick) and a **practical maximum around 4200 fluid/s**; a machine with
+two separate output connections for the same fluid can push roughly 8400
+fluid/s combined. A connected run of pipes needs an interposed pump once it
+exceeds **320×320 tiles (10×10 chunks)** — beyond that unaided distance
+fluid stops flowing until a pump breaks the segment. Storage tank capacity
+is 25,000 fluid; fluid wagon capacity is 50,000 (both pages agree); barrels
+hold 50 fluid each, and a cargo wagon fully loaded with barrels carries
+20,000 fluid total.
+
+## Mining
+
+From the wiki's *Mining* page.
+
+| Drill | Mining speed | Footprint | Coverage area | Resource drain |
+|---|---|---|---|---|
+| Burner mining drill | 0.25 | 2×2 | 2×2 | 100% |
+| Electric mining drill | 0.5 | 3×3 | 5×5 | 100% |
+| Big mining drill (Space Age) | 2.5 | 5×5 | 13×13 | 50% |
+
+Base mining time (before speed/productivity modifiers) is 1 second each for
+iron ore, copper ore, coal, stone, and calcite; 2 seconds for uranium ore;
+5 seconds for tungsten ore; 0.5 seconds for scrap. "Resource drain" is the
+percentage of a patch's remaining amount consumed per mining action — big
+mining drills deplete finite patches at half the normal rate. The page
+additionally notes quality tiers reduce drain further (roughly 1/6th per
+quality level, with legendary giving a double bonus).
+
+Mining productivity research is confirmed to exist and to raise output
+"without... slow[ing] the mining drill down (unlike productivity modules),"
+but the fetched page did not give the per-level percentage bonus or
+infinite-research cost curve for it in isolation — treat any specific
+mining-productivity percentage as **unverified** (see the infinite-research
+formula for the arithmetic *cost*, which the *Technology* page does confirm,
+below).
+
+## Research / technology
+
+From the wiki's *Technology* page.
+
+**Science packs** — base game: Automation, Logistic, Chemical, Military,
+Production, Utility, Space. Space Age adds: Metallurgic, Electromagnetic,
+Agricultural, Cryogenic, Promethium.
+
+**Infinite research cost formulas** (confirmed on the page; `N` = level
+being purchased, `F` = level the formula starts counting from):
+
+| Research | Formula | Type |
+|---|---|---|
+| Mining productivity | `P[N] = 2500 × (N − F)` | Arithmetic |
+| Follower robot count | `P[N] = 1000 × (N − F)` | Arithmetic |
+| Most weapon damage | `P[N] = 1000 × 2^(N − F − 1)` | Geometric (×2) |
+| Artillery shell range | `P[N] = 1000 × 2^N` | Geometric (×2) |
+| Artillery shooting speed | `P[N] = 1000 + 1000 × 3^(N − 1)` | Geometric (×3) |
+| Research productivity (Space Age) | `P[N] = 1000 × 1.2^N` | Geometric |
+| Most other productivity techs (Space Age) | `P[N] = 1000 × 1.5^N` | Geometric |
+
+**Practical caps** stated on the page: follower-robot-count level 50 is the
+theoretical max (1200 deployable robots); recipe productivity research hits
+the Space Age 300% productivity cap around level 30; railgun-turret-speed
+research reaches an effective maximum around level 10.
+
+## Energy & work
+
+From the wiki's *Energy and work* page.
+
+`1 W = 1 J/s` — power is simply energy per second. The page defines
+efficiency as "the ratio between *useful* work done and the energy
+expended," and notes Factorio mostly abstracts inefficiency through
+**pollution output** rather than tracking heat loss directly, and that a few
+systems deliberately break real-world 100%-efficiency limits (belts and
+turrets run unpowered; the player performs work without consuming food).
+
+Worked example from the page: an **Assembling machine 1** draws 3 kW while
+idle (drain) plus 90 kW while actively crafting, for 93 kW combined while
+working. (Compare the Power section above's Assembling machine 2 example,
+150 kW + 5 kW drain = 155 kW — a different machine tier, sourced from
+*Electric system* instead, consistent in method.)
+
+## Balancers
+
+From the wiki's *Balancer mechanics* page.
+
+- **Input-balanced**: "take evenly from all input belts/belt lanes."
+- **Output-balanced**: "distribute evenly to all output belts/belt lanes."
+- **Throughput-unlimited**: the strict combination of (1) 100% throughput
+  under full load, and (2) working for "any arbitrary amount of input belts
+  ... to any arbitrary amount of output belts" — i.e. neither balance
+  property alone guarantees full throughput at every input/output ratio.
+
+For an `n`-to-`n` balancer where `n` is a power of two, the page gives the
+Beneš-network splitter-count formula directly:
+
+```
+splitters = n × log2(n) − n / 2
+```
+
+(the page describes this as "based on the number of nodes in a Beneš
+network, essentially the same as a throughput-unlimited balancer"; it does
+not itemize a table of splitter counts by `n` — e.g. `n=4` → 6 splitters and
+`n=8` → 20 splitters are simple arithmetic from the formula above, not
+values quoted directly on the page).
+
+## Stacks & storage
+
+From the wiki's *Stack* and *Storage* pages.
+
+| Stack size | Example items |
+|---|---|
+| 1 | Nuclear fuel, artillery shell, satellite, modular armor, blueprint |
+| 5 | Locomotive, all wagons |
+| 10 | Roboport, rocket fuel, artillery turret, atomic bomb, low density structure |
+| 20 | Some equipment modules, pumpjack |
+| 50 | Ores, stone, coal, modules, electric mining drill, electric furnace, assemblers, chests, inserters, turrets (gun/laser), power poles, worker robots, solid fuel |
+| 100 | Iron/copper/steel plate, processing unit, iron gear wheel, stone brick, concretes, both uranium isotopes, pipe, belts, wall, landfill |
+| 200 | Electronic/advanced circuit, magazines, tank cannon shells, copper cable, circuit wires, science packs (except space science) |
+| 2000 | Space science pack only |
+
+Rule from the page: "the first inserted item determines which item types
+can be stored" in a slot, which indirectly sets that slot's effective
+capacity via the item's stack size.
+
+**Storage capacities**: car 80 inventory slots; cargo wagon 40 slots;
+storage tank 25,000 fluid; barrel 50 fluid each; belt storage is quoted on
+the page as "80 items per 10 belts when both sides of the belt are used"
+(i.e. per 10 belt tile-pieces, both lanes).
+
+## Transport-method selection
+
+From the wiki's *Tutorial:Transport use cases* page. These are decision
+thresholds, not hard engine limits.
+
+| Method | Throughput | Practical range |
+|---|---|---|
+| Basic (yellow) belt | ≤900 items/min | short–medium (matches the 15 items/s figure in Belts above: 900/60 = 15) |
+| Express belt | ≤2700 items/min | short–medium (2700/60 = 45, matching Belts above) |
+| Cargo wagon (ore) | ~2000 items/wagon | long distance |
+| Cargo wagon (plates) | ~4000 items/wagon | long distance |
+| Logistic bots | very high in dense areas | sweet spot **under 50 tiles** |
+
+The page frames belts/trains crossover at roughly **500 tiles** — beyond
+that, trains generally beat belts on a bulk route. For logistic bots, its
+worked example for delivering 3000 items/minute needs about 300 bots at 50
+tiles but about 3000 bots at 500 tiles (bot count scales with distance), and
+it characterizes bots as "terrible at long distances and bulk goods" —
+best suited to short-range, low-volume/high-value delivery inside a dense
+factory rather than bulk ore/plate hauling.
 
 ## Hard limits & magic numbers
 
@@ -285,6 +539,23 @@ here as not yet confirmed:
   spreads to neighbors, then spreads at ~2%/64 ticks.
 - Biter spawner attack-muster timing: random 1–10 minutes, stragglers get
   up to +2 minutes.
+- Nuclear reactor: 40 MW base output; +100% output per adjacent-reactor
+  link (uncapped); meltdown above 900°C if destroyed.
+- Heat pipe drop: `1 + P/15 °C`; reactor internal conduction: `1 + P/387 °C`.
+- Uranium fuel cell: 200 s burn time; Kovarex needs 40 U-235 stockpiled to
+  start.
+- Module effects are additive; efficiency-module energy floor is 20% of
+  base; consumption reduction caps at −80%.
+- Beacon distribution efficiency: 1.5 (normal quality); per-beacon
+  contribution to a shared machine = distribution efficiency ÷ √n.
+- Pipe throughput: ~6000 fluid/s theoretical, ~4200 fluid/s practical per
+  connection; pipe segment limit 320×320 tiles (10×10 chunks) without a
+  pump; storage tank 25,000; fluid wagon 50,000.
+- Mining drill speeds: burner 0.25, electric 0.5, big mining drill 2.5;
+  resource drain 100% (normal) / 50% (big mining drill).
+- Beneš balancer splitter count for power-of-two `n`: `n × log2(n) − n/2`.
+- Belt decision throughput: 900 items/min (basic) / 2700 items/min
+  (express); logistic bots' practical sweet spot is under 50 tiles.
 
 ## Sources
 
@@ -298,3 +569,19 @@ here as not yet confirmed:
 - https://wiki.factorio.com/Resistance — fetched alongside `Damage` to
   cross-check the resistance formula.
 - https://wiki.factorio.com/Circuit_network
+- https://wiki.factorio.com/Constant_combinator — fetched to confirm the
+  2.0.7 logistic-groups rework of constant combinators.
+- https://wiki.factorio.com/Nuclear_reactor
+- https://wiki.factorio.com/Heat_pipe
+- https://wiki.factorio.com/Uranium_processing
+- https://wiki.factorio.com/Heat_exchanger
+- https://wiki.factorio.com/Module
+- https://wiki.factorio.com/Beacon
+- https://wiki.factorio.com/Fluid_system
+- https://wiki.factorio.com/Mining
+- https://wiki.factorio.com/Technology
+- https://wiki.factorio.com/Energy_and_work
+- https://wiki.factorio.com/Balancer_mechanics
+- https://wiki.factorio.com/Stack
+- https://wiki.factorio.com/Storage
+- https://wiki.factorio.com/Tutorial:Transport_use_cases

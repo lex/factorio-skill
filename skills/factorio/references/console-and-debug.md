@@ -95,7 +95,60 @@ fact that the multiplayer-only commands (banning, promote/demote, player
 listing) exist because there are other players to manage; no other
 single- vs. multiplayer distinction is stated.
 
+## Performance / UPS diagnosis
+
+Per the wiki's *Tutorial:Diagnosing performance issues* page.
+
+**Debug toggles to enable first (F4):** `show-time-usage` (per-system
+timing breakdown) and `show-entity-time-usage` (breaks the entity-manager
+cost down by entity type); `hide-mod-guis` is also recommended so mod
+windows don't obscure the readout. The time-usage display reports
+"average time, minimum time, and maximum time taken by the system over
+the last 100 ticks." To widen that sampling window, the console command
+`/perf-avg-frames 1000` expands analysis beyond the default (~2 seconds
+of ticks).
+
+**The budget:** the game "aims for 60 FPS and UPS," giving "16.667ms to
+calculate each tick." Guidance from the page: "Anything above 1ms may be
+worth looking into, and anything above 5 is very significant" for any
+single line item in the time-usage breakdown.
+
+**GPU-bound vs. simulation-bound:** compare FPS against UPS (`show-fps`).
+Low FPS with high UPS points to a graphics (GPU-bound) problem; low FPS
+*with* low UPS points to a simulation (CPU-bound) problem, and only the
+latter warrants the deeper UPS-specific diagnosis below.
+
+**Named UPS bottlenecks**, per the page:
+- **Entity manager** — usually the largest single cost; use the
+  entity-time-usage screen to see which entity types dominate.
+- **Circuit networks** — "use fewer combinators and other circuit
+  connections."
+- **Fluid/pipe networks** — "reduce your amount of pipes... replace
+  nuclear power with solar power" (nuclear setups are called out as
+  especially costly on this axis).
+- **Electric networks** — cost scales with "the number of different
+  electric networks, not their size," i.e. many small separate networks
+  are worse than one big one.
+- **Train pathing** — mitigated by using "fewer but bigger trains."
+- **Mods** — script update time can dominate; the page's remedy is to
+  identify and uninstall the offending mod.
+
+**Optimization tips**, per the page:
+- Prefer underground pipes over long pipe runs — each underground pipe
+  pair only counts as 2 fluid entities versus 3+ for the equivalent run
+  of regular pipes.
+- Prefer solar over nuclear power for UPS (independent of raw power
+  output considerations).
+- Prefer fewer, faster machines (with beacons/modules) over many slow
+  machines — the page states this "will cost less" in UPS terms.
+- Reduce inserter swing frequency ("inserter clocking") rather than
+  letting inserters swing on every possible cycle.
+- Consolidate electric networks into fewer, larger networks rather than
+  many small separate ones (per the electric-network bottleneck above).
+- Reduce the number of radars in use.
+
 ## Sources
 
 - https://wiki.factorio.com/Debug_mode
 - https://wiki.factorio.com/Console
+- https://wiki.factorio.com/Tutorial:Diagnosing_performance_issues
