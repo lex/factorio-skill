@@ -208,7 +208,8 @@ entry follows the same shape:
 - **`LuaPlanet` existing doesn't mean its surface exists yet.** A
   `LuaPlanet`'s `surface` field is read-only and a planet does **not**
   auto-generate its surface — the surface must be created explicitly via
-  `create_surface()` (or linked with `associate_surface()`). → Don't assume
+  `create_surface()` (or linked with `associate_surface()`, which 2.0
+  refuses for Aquilo and 2.1.21+ allows). → Don't assume
   `planet.surface` is populated just because `game.planets[name]` exists;
   check for `nil` and generate/associate the surface first.
 

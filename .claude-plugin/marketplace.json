@@ -7,7 +7,7 @@
     {
       "name": "factorio",
       "source": "./",
-      "description": "Factorio 2.0 + Space Age reference skill for modding and game mechanics."
+      "description": "Factorio 2.x (2.1) + Space Age reference skill for modding and game mechanics."
     }
   ]
 }

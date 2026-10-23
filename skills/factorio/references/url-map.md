@@ -123,8 +123,10 @@ Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics
 - LuaPlanet class: https://lua-api.factorio.com/latest/classes/LuaPlanet.html
 - LuaSpacePlatform class: https://lua-api.factorio.com/latest/classes/LuaSpacePlatform.html
 
-## Upcoming / unreleased (2.1)
-- Upcoming features (Factorio 2.1, subject to change): https://wiki.factorio.com/Upcoming_features
+## Factorio 2.1 (released)
+- What changed, release by release: `data/changelog.txt` in any 2.1 download (the headless one is free: https://www.factorio.com/get-download/2.1.23/headless/linux64)
+- Current version numbers: https://factorio.com/api/latest-releases
+- API docs for a specific version (e.g. the last 2.0): https://lua-api.factorio.com/2.0.77/ (`/latest/` is 2.1)
 
 ## Console, debug & modding overview
 - Debug mode (F5/F4 overlays, show-* toggles): https://wiki.factorio.com/Debug_mode
@@ -138,5 +140,6 @@ Prefer `lua-api.factorio.com/latest/` for API, `wiki.factorio.com` for mechanics
 - Diagnosing performance issues tutorial: https://wiki.factorio.com/Tutorial:Diagnosing_performance_issues
 
 ## Note
-URLs verified on 2026-07-07 against `/latest/`. If a page 404s, check the
+URLs verified on 2026-07-07 against `/latest/`, which since 2.1's release
+serves the 2.1 docs. If a page 404s, check the
 API/wiki index — the site reorganizes across versions.

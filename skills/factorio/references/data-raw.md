@@ -9,6 +9,9 @@ load order, and the prototype categories you'll actually touch. For the
 runtime/control stage (`game`, `script`, events, `storage`), see
 `modding-api.md`.
 
+> **2.1:** several 2.0 attributes, methods and prototype fields were removed
+> or renamed; see `factorio-2.1.md` before porting 2.0 code.
+
 ## What data.raw is
 
 `data.raw` is the global table that holds **every prototype in the

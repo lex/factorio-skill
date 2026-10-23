@@ -2,7 +2,9 @@
 
 > Space Age is a paid expansion (released 2024-10-21) bundling four mods:
 > **Space Age** itself, **Quality**, **Elevated Rails**, and **Recycler**
-> (per the wiki's *Space Age* page). These change assumptions valid in base
+> (per the wiki's *Space Age* page). Since **2.1**, `recycler` is its own mod
+> (in 2.0 the recycler lived in `quality`) and Quality is only recommended,
+> so Space Age can run with Quality off (see `factorio-2.1.md`). These change assumptions valid in base
 > 2.0 — every section below is flagged **[Space Age only]** where the
 > fetched source says the mechanic doesn't exist without the expansion, and
 > **[separable mod]** where a source says that piece can be toggled on
@@ -71,7 +73,10 @@ wagons.
 
    On success, the product is upgraded one tier from its ingredient
    quality; the machine then **repeats the roll at a flat 10% chance** to
-   upgrade again, continuing until a roll fails. So going from Normal all
+   upgrade again, continuing until a roll fails. (In 2.1 the prototypes say
+   this directly: `next_probability` 1 for the first step and
+   `chain_probability` 0.1 for the repeats; 2.0 encoded the same chances as
+   a 10× module effect times `next_probability` 0.1.) So going from Normal all
    the way to Legendary in one craft is possible but geometrically rare.
 
 **Recyclers** [separable mod] return only **25% of
@@ -323,7 +328,8 @@ Factorio Lua API docs (`LuaBootstrap`):
   present when Space Age content is active. Per `LuaPlanet`: it has a
   read-only `name`, a read-only `surface` (a `LuaPlanet` does **not**
   auto-generate its surface — call `create_surface()` to generate it, or
-  `associate_surface(surface)` to link an existing one), a `prototype`
+  `associate_surface(surface)` to link an existing one; on 2.0 this refuses
+  planets that require heating such as Aquilo, which 2.1.21 allows), a `prototype`
   reference, and `get_space_platforms(force)` to list constructed
   platforms belonging to a force.
 - `LuaSpacePlatform` has its own read-only `surface` field ("the surface

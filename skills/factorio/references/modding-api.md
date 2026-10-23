@@ -5,6 +5,9 @@ sequential stages, each with its own Lua state and its own subset of the
 API. Get the stage wrong (e.g. touch `game` where it isn't available) and
 the mod errors or, worse, desyncs a multiplayer game.
 
+> **2.1:** several 2.0 attributes, methods and prototype fields were removed
+> or renamed; see `factorio-2.1.md` before porting 2.0 code.
+
 ## The three stages
 
 | Stage | Files loaded | Purpose | What's available |

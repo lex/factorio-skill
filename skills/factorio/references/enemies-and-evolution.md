@@ -10,6 +10,11 @@ pollution production/absorption/spawner-muster mechanics already live in
 `mechanics.md` (**Combat** and **Pollution** sections) — this file does not
 repeat them, only references them where relevant.
 
+**2.1 changed enemy expansion a lot**: minimum cooldown 4 → 10 min, settler
+groups of 5–10 multiplied by `8 ^ evolution` (so up to 80 at evolution 1),
+a new minimum expansion distance of 3 chunks, and a reworked chunk score.
+Blocked spawners now emit an acid cloud. Exact values: `factorio-2.1.md` → *Gameplay changes*.
+
 Space Age planet-native enemies — **Pentapods** (Gleba) and
 **Demolishers** (Vulcanus) — are out of scope here; see `space-age.md` for
 their stats. This file covers Nauvis biters/spitters/worms only.

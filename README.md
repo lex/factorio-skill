@@ -1,7 +1,7 @@
 # factorio-skill
 
-A Claude Code agent skill giving Claude working knowledge of **Factorio 2.0 +
-Space Age** — for Lua modding/scenarios and game-mechanics reasoning.
+A Claude Code agent skill giving Claude working knowledge of **Factorio 2.x
+(2.1 stable) + Space Age** — for Lua modding/scenarios and game-mechanics reasoning.
 
 This repo is also a **Claude Code plugin marketplace**, so the skill can be
 installed with one command.
@@ -36,4 +36,5 @@ skills/factorio/
 ```
 
 All facts are distilled from wiki.factorio.com and lua-api.factorio.com and
-cited in-file.
+cited in-file. The 2.1 changes come from the game's own changelog and
+prototype files.

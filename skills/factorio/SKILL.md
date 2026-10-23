@@ -1,27 +1,32 @@
 ---
 name: factorio
 description: >-
-  Factorio 2.0 + Space Age reference for modding and game mechanics. Use when
+  Factorio 2.1 + Space Age reference for modding and game mechanics. Use when
   writing control.lua, scenarios, map/surface generation, prototypes or
   data.raw, or mods (Factorio runtime API, LuaSurface, LuaEntity, events), and
   when reasoning about game mechanics — recipes, ratios, entity stats,
-  terminology, limits, quirks, quality, spoilage, planets. Targets Factorio 2.0
-  and the Space Age expansion.
+  terminology, limits, quirks, quality, spoilage, planets. Also use when
+  porting a mod or scenario from 2.0 to 2.1, or when code fails on 2.1 with
+  "is read only" or "doesn't contain key" errors. Targets Factorio 2.x (2.1
+  stable) and the Space Age expansion.
 ---
 
-# Factorio (2.0 + Space Age)
+# Factorio (2.x + Space Age)
 
-> Version: Factorio **2.0** with the **Space Age** expansion. Facts predating
-> 2.0 are out of scope unless explicitly labeled historical. Unreleased **2.1**
-> features are tracked separately in `references/upcoming-2.1.md` and must not
-> be treated as current behavior.
+> Version: Factorio **2.1** (stable since October 2026; 2.1.23 at the last
+> update) with the **Space Age** expansion. Most references were written for
+> **2.0** and still hold; `references/factorio-2.1.md` lists everything 2.1
+> changed: removed and renamed API, data-stage changes, new numbers. Servers
+> and mods may still run 2.0.77: check the version
+> (`script.active_mods.base`) before giving version-specific advice. Facts
+> predating 2.0 are out of scope unless explicitly labeled historical.
 
 ## What you get here
 
 Curated essentials below (terminology + the highest-value gotchas); deeper
 detail lives in `references/`. When a fact isn't covered here or in
 `references/`, WebFetch the right page via `references/url-map.md` — do not
-answer Factorio 2.0 / Space Age facts from memory.
+answer Factorio 2.x / Space Age facts from memory.
 
 ## Core terminology
 
@@ -94,6 +99,12 @@ answer Factorio 2.0 / Space Age facts from memory.
 
 - **`storage`, not `global`.** Factorio 2.0 renamed the persistent per-mod
   data table; port any `global.foo` snippet to `storage.foo`.
+- **2.1 removed some 2.0 API.** `entity.active = x` and `entity.minable = x`
+  are read-only (use `disabled_by_script` and `minable_flag`), `entity.fluidbox`
+  is gone (`get_fluid`/`set_fluid`), `defines.inventory.furnace_*` and
+  `assembling_machine_*` are now `crafter_*`, and quick bar slots take a page
+  and a slot. Most replacements already exist in 2.0.77, so ported code can
+  run on both. Full table in `references/factorio-2.1.md`.
 - **Check `.valid` before touching a stored `LuaObject`.** A destroyed
   entity/player/surface leaves a stale handle that errors on access.
 - **Don't do real work in `on_load()`.** `game` isn't available there and
@@ -124,8 +135,8 @@ solar priority order, circuit signal overflow, and more).
   definition)? → `references/data-raw.md`, or `prototypes.html`/`types.html`.
 - Need Space Age specifics (quality, spoilage, planets, space platforms,
   elevated rails)? → `references/space-age.md`.
-- Asked about an *upcoming/unreleased* 2.1 feature? → `references/upcoming-2.1.md`
-  (clearly flagged as not-yet-shipped; don't state it as current behavior).
+- Porting from 2.0, an error that only happens on 2.1, or "what changed in
+  2.1"? → `references/factorio-2.1.md`.
 - Need to inspect/test a running game (debug overlays, console commands,
   cheats)? → `references/console-and-debug.md`.
 - Asked about rail signals/blocks, chain-signal behavior, train schedules
@@ -169,5 +180,6 @@ solar priority order, circuit signal overflow, and more).
   equipment-grid items.
 - `references/enemies-and-evolution.md` — evolution factor formula,
   biter/spitter/worm & turret/wall/mine stats, peaceful mode.
-- `references/upcoming-2.1.md` — unreleased Factorio 2.1 features (subject to change).
+- `references/factorio-2.1.md` — what 2.1 changed from 2.0: API migration table
+  (with 2.0 compatibility), data-stage changes, new numbers.
 - `references/url-map.md` — topic → URL for deep fetch.

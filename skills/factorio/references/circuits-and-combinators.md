@@ -183,7 +183,8 @@ input into a circuit network." (Decider_combinator, applies to both)
 conditions on the left of the GUI and a list of normal/else outputs on the
 right; "Generally whenever the conditions are satisfied the normal outputs
 are activated. When the conditions are not satisfied, the else outputs are
-activated." (Decider_combinator)
+activated." (Decider_combinator) Else outputs are **2.1.9+**; on 2.0 a
+decider has only the normal outputs.
 
 ### Comparators (exact list from the page)
 
@@ -274,6 +275,9 @@ only ever emits the minimum.
 ## Selector combinator
 
 New combinator type, introduced in **2.0.7** per its own History section.
+2.1 added a **Time** mode (game tick, time of day, day length), an index
+comparator to select the N highest or lowest signals, and (Space Age) a
+**quality select** mode (2.1.21); the list below is the 2.0 set.
 "Part of the circuit network... It has five different modes of operation
 (or eight with Space Age enabled) to filter out various signals from an
 input wire." (Selector_combinator)
